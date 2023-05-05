@@ -16,10 +16,10 @@ make
 git clone https://github.com/antimatter15/alpaca.cpp
 cd alpaca.cpp
 
-Dnf -y install python3-devel python3-setuptools libtiff-devel libjpeg-devel libzip-devel freetype-devel lcms2-devel libwebp-devel tcl-devel tk-devel
+sudo dnf install -y python3-devel python3-setuptools libtiff-devel libjpeg-devel libzip-devel freetype-devel lcms2-devel libwebp-devel tcl-devel tk-devel
 
 wget https://github.com/antimatter15/alpaca.cpp/releases/download/81bd894/alpaca-linux.zip
-wget https://huggingface.co/Sosaka/Alpaca-native-4bit-ggml/blob/main/ggml-alpaca-7b-q4.bin#:~:text=file%3A%204.21%20GB-,Raw%20pointer%20file,-Git%20Large%20File
+wget https://huggingface.co/Sosaka/Alpaca-native-4bit-ggml/resolve/main/ggml-alpaca-7b-q4.bin
 
 make chat
 
