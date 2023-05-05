@@ -35,3 +35,25 @@ make chat
 https://github.com/antimatter15/alpaca.cpp/releases/tag/81bd894
 https://huggingface.co/Sosaka/Alpaca-native-4bit-ggml/blob/main/ggml-alpaca-7b-q4.bin 
 
+
+실제 트립톤 서버에 배포단계를 진행합니다.
+
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+sudo dnf config-manager --set-enabled epel
+
+sudo dnf install git-lfs
+
+git lfs install
+
+git clone https://huggingface.co/AlekseyKorshuk/vicuna-7b.git
+download checkpoint
+
+## edit config file
+cd vicuna-7b
+
+vi model_configs/minigpt4_vicuna.yaml
+
+vicuna_weight_path: "/path/to/vicuna_weights/"
+
+
+
