@@ -21,7 +21,7 @@ def ocr():
 
             input_batch = preprocess(filepath)
             result = infer(input_batch)
-            labels_file = "./model_repository/resnet50/densenet_labels.txt"
+            labels_file = "./densenet_labels.txt"
             result_text = postprocess(result, labels_file)
 
             return jsonify(text=result_text)
