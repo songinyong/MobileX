@@ -17,11 +17,60 @@ This tutorial demonstrates how to create a simple service that identifies object
 
 The advantage of Triton server is that it provides a unified API for models using various frameworks such as PyTorch or TensorFlow.
 
-outputs = httpclient.InferRequestedOutput("fc6_1", binary_data=True)
 
-start_time = time.time()
+```python
+
+client = httpclient.InferenceServerClient(url="triton.default.svc.ops.openark:8000")
+#inferencing
+outputs = httpclient.InferRequestedOutput("fc6_1", binary_data=True)
 res = client.infer(model_name="densenet_onnx", inputs=[inputs], outputs=[outputs])
 result = res.as_numpy("fc6_1")
-end_time = time.time()
 
-해당 
+```
+
+Currently, Triton server does not allow ordinary users to upload directly due to security reasons. This is because have same name multiple models can be uploaded simultaneously, which may cause conflicts and even lead to the deletion of other models. Instead, a simple explanation of how to deploy to Triton server is provided below.
+
+Now, let's provide a simple explanation of how to deploy models to Triton server:
+
+1.Prepare your model files (e.g., PyTorch .pt, TensorFlow .pb, ONNX .onnx, etc.) and create a directory named with your model_name under the model_repository directory.
+
+2.Place the model files in a subdirectory named 1 (which represents the version number) within the model_name directory.
+
+3.Create a config.pbtxt file in the model_name directory, specifying the model configuration details such as input and output dimensions, data types, and framework used.
+
+
+The correct directory would be as follows:
+```
+model_repository/
+└── {model_name}/
+    ├── config.pbtxt
+    └── 1/
+        ├── model.pytorch  # For a PyTorch model
+        └── model.savedmodel  # For a TensorFlow model
+```         
+
+And there is an example of a valid config.pbtxt
+```
+name: "densenet_onnx"
+platform: "onnxruntime_onnx"
+max_batch_size : 0
+input [
+  {
+    name: "data_0"
+    data_type: TYPE_FP32
+    dims: [1, 3, 224, 224 ]
+  }
+]
+
+output [
+  {
+    name: "fc6_1"
+    data_type: TYPE_FP32
+    dims: [ 1000 ]
+    reshape { shape: [ 1, 1000, 1, 1 ] }
+    label_filename: "densenet_labels.txt"
+  }
+]
+```
+
+We have looked at a simple web programming example of serving a deployed model on a Triton server through APIs provided by the Triton server. Once Triton server is set up, it is easy to maintain the deployment pipeline even when the model is updated.
