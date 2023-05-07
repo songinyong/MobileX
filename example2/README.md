@@ -17,10 +17,23 @@ This tutorial demonstrates how to create a simple service that identifies object
 
 The advantage of Triton server is that it provides a unified API for models using various frameworks such as PyTorch or TensorFlow.
 
+And it makes dynamic allocation easier for multiple GPUs.
+
+This reduces the effort required to manage the model when using the ai model in practice.
+
+
+![example2 diagram](https://user-images.githubusercontent.com/30370933/236705836-2c1468b2-5fed-4fe1-9a1d-ec4afe3911ce.JPG)
+
+The diagram of the Flask app we ran is as follows: 
+
+If the Flask server is running normally, it will connect to the Triton pod inside the mobile x Cluster. 
+
+The Triton pod will search for the model name requested by the user in storage and perform the model inference task through A10 deployed inside the HPC.
 
 ```python
-
+#connecting server
 client = httpclient.InferenceServerClient(url="triton.default.svc.ops.openark:8000")
+
 #inferencing
 outputs = httpclient.InferRequestedOutput("fc6_1", binary_data=True)
 res = client.infer(model_name="densenet_onnx", inputs=[inputs], outputs=[outputs])
