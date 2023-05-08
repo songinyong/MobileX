@@ -36,5 +36,6 @@ https://huggingface.co/Sosaka/Alpaca-native-4bit-ggml/blob/main/ggml-alpaca-7b-q
 
 If the model installation and execution have been completed successfully, you can use the chat mode locally to interact with the model and ask questions.
 
+<img width="564" alt="스크린샷 2023-05-08 오전 9 03 30" src="https://user-images.githubusercontent.com/30370933/236709206-6bd31985-4fb4-4454-b274-89f751f4860f.png">
 
 
