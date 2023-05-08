@@ -1,17 +1,4 @@
-
-# install environment
-sudo pip3 install flask tritionclient geventhttpclient
-
-
-# Execution command
-
-Change directory to the example2 folder and execute the command "python3 app.py"
-
-
-## 실행 화면
-<img width="707" alt="스크린샷 2023-05-07 오후 7 10 17" src="https://user-images.githubusercontent.com/30370933/236671302-7224fdc8-6647-4e6e-ae58-6b036e14d7ce.png">
-
-
+# 2. Demonstration of an inference service using Triton Server
 
 This tutorial demonstrates how to create a simple service that identifies objects in an image using Triton Inference Server.
 
@@ -29,6 +16,26 @@ The diagram of the Flask app we ran is as follows:
 If the Flask server is running normally, it will connect to the Triton pod inside the mobile x Cluster. 
 
 The Triton pod will search for the model name requested by the user in storage and perform the model inference task through A10 deployed inside the HPC.
+
+
+## install environment
+sudo pip3 install flask tritionclient geventhttpclient
+
+
+## Execution command
+
+Change directory to the example2 folder and execute the command "python3 app.py"
+
+
+## result
+<img width="707" alt="스크린샷 2023-05-07 오후 7 10 17" src="https://user-images.githubusercontent.com/30370933/236671302-7224fdc8-6647-4e6e-ae58-6b036e14d7ce.png">
+
+
+You can create a model service that measures what objects are in a photo by dragging the photo. If no additional settings are configured, it will run on port 5000 by default.
+
+
+
+### here is a more detailed explanation
 
 ```python
 #connecting server
