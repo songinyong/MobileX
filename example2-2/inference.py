@@ -63,9 +63,8 @@ def infer(input_batch):
         if hasattr(e, 'message'):
             print(e.message)
 
-            
-def index_to_label(index):
-    return labels[int(index) - 1]
+def index_to_label(index, labels_map):
+    return labels_map[int(index)]["name"]            
 
 
 
@@ -88,17 +87,29 @@ def visualize_results(image_path, detection_boxes, detection_scores, detection_c
 
     plt.axis("off")
     plt.show()
-    
-def draw_boxes_on_image(image, detection_boxes, detection_classes, detection_scores, category_index, min_score_thresh):
-    for i in range(len(detection_boxes)):
-        if detection_scores[i] > min_score_thresh:
-            class_id = int(detection_classes[i])
-            class_name = category_index[class_id]["name"]
-            score = detection_scores[i]
-            box = detection_boxes[i]
 
-            y1, x1, y2, x2 = (box * np.array([image.shape[0], image.shape[1], image.shape[0], image.shape[1]])).astype(int)
-            cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
-            cv2.putText(image, f'{class_name}: {score:.2f}', (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+
+
+def draw_boxes_on_image(image, boxes, classes, scores, labels_map, min_score_thresh=0.5):
+    for i in range(len(boxes)):
+        if scores[i] >= min_score_thresh:
+            ymin, xmin, ymax, xmax = boxes[i]
+            height, width, _ = image.shape
+            ymin = int(ymin * height)
+            ymax = int(ymax * height)
+            xmin = int(xmin * width)
+            xmax = int(xmax * width)
+
+            class_name = index_to_label(classes[i], labels_map)  # 수정된 부분
+            label = '{} {:.2f}'.format(class_name, scores[i])
+
+            cv2.rectangle(image, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            font_scale = 0.5
+            thickness = 1
+            text_size = cv2.getTextSize(label, font, font_scale, thickness)[0]
+            cv2.rectangle(image, (xmin, ymin - text_size[1] - 2), (xmin + text_size[0], ymin), (0, 255, 0), -1)
+            cv2.putText(image, label, (xmin, ymin - 2), font, font_scale, (0, 0, 0), thickness)
 
     return image
+ 
