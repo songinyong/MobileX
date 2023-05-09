@@ -11,6 +11,7 @@ First, we aim to freely install the model locally and run the chatbot
 
 
 git clone https://github.com/antimatter15/alpaca.cpp
+
 cd alpaca.cpp
 
 sudo dnf install -y python3-devel python3-setuptools libtiff-devel libjpeg-devel libzip-devel freetype-devel lcms2-devel libwebp-devel tcl-devel tk-devel
