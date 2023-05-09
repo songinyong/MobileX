@@ -9,6 +9,15 @@ Furthermore, in this practice, we will provide a more detailed example code for 
 
 We will also provide an example code for implementing a service that uses multiple models simultaneously, which participants can run and experiment with.
 
+## install environment
+
+sudo dnf -y install epel-release
+
+sudo dnf -y install python3-devel gcc
+
+sudo pip3 install opencv-python
+
+sudo pip3 install matplotlib
 
 ## Result
 
