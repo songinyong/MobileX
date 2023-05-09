@@ -22,6 +22,8 @@ The Triton pod will search for the model name requested by the user in storage a
 
 sudo pip3 install --upgrade pip
 
+sudo dnf install -y gcc gcc-c++ python3-devel
+
 sudo pip3 install nvidia-pyindex
 
 sudo pip3 install flask tritonclient geventhttpclient
