@@ -19,7 +19,14 @@ The Triton pod will search for the model name requested by the user in storage a
 
 
 ## install environment
-sudo pip3 install flask tritionclient geventhttpclient
+
+sudo pip3 install --upgrade pip
+
+sudo pip3 install nvidia-pyindex
+
+sudo pip3 install flask tritonclient geventhttpclient
+
+sudo pip3 install torch torch-vision
 
 
 ## Execution command
