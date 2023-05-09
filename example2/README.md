@@ -28,7 +28,7 @@ sudo pip3 install nvidia-pyindex
 
 sudo pip3 install flask tritonclient geventhttpclient
 
-sudo pip3 install torch torch-vision
+sudo pip3 install torch torchvision
 
 
 ## Execution command
