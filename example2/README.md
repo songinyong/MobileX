@@ -31,6 +31,22 @@ sudo pip3 install flask tritonclient geventhttpclient
 sudo pip3 install torch torchvision
 
 
+Some workstations may have Jupyter Notebook installed.
+In this case, even if the libraries are installed correctly, the modules may not run properly.
+
+In this situation, open a command prompt and type jupyter notebook and press Enter to run.
+
+Once Jupyter Notebook is running, proceed with the exercises within the Jupyter Notebook environment.
+
+To install packages within Jupyter Notebook, use the following method:
+
+!pip install ...
+
+Replace the "..." with the package name you want to install.
+
+thanks
+
+
 ## Execution command
 
 Change directory to the example2 folder and execute the command "python3 app.py"
