@@ -39,6 +39,27 @@ https://github.com/melodysdreamj/WizardVicunaLM
 WizardVicuna is an improved LLM model that provides excellent support for foreign languages, including Korean. As a model currently deployed on the TRIPTON server, your goal is to utilize the knowledge gained from previous exercises to create and run a chatbot server locally, leveraging the capabilities of the WizardVicuna model.
 
 
-## 
+## Performance Requirements for Hands-on Exercises
 
+7B => ~4 GB
+
+13B => ~8 GB
+
+30B => ~16 GB
+
+65B => ~32 GB
+
+In Exercise 1, you have experienced running a 4-bit quantized chatbot locally. The original models typically operate using 32-bit floating-point numbers by default, which means that the inference of the original model would require at least 8 times more memory than what is listed in the table above.
+
+For instance, if a model is over 50GB in size likes Vicunna13B, additional memory is needed during the inference process. This is because the original model, with its 32-bit floating-point representation, requires more memory to store the intermediate states and results during computation.
+
+Furthermore, when it comes to training, even larger memory capacities are necessary due to factors such as batch size. A larger batch size means that more data points are processed simultaneously, which in turn requires more memory to store the gradients, activations, and other intermediate values. As a result, the actual memory requirements for training can be significantly higher than those for inference.
+
+Furthermore, when it comes to training, even larger memory capacities are necessary due to factors such as batch size. A larger batch size means that more data points are processed simultaneously, which in turn requires more memory to store the gradients, activations, and other intermediate values. As a result, the actual memory requirements for training can be significantly higher than those for inference.
+
+For example, the Alpaca 7B model required four A100 GPUs during training, and even the relatively memory-efficient fine-tuning process necessitated approximately 112GB or more of memory.
+
+Operating unquantized original LLM models is still burdensome for individuals due to their substantial memory requirements.
+
+Therefore, the goal of this hands-on exercise is to easily perform inference tasks using the pre-configured 13B Wizard-Vicunna Model on the TRIPTON server, enabling a more accessible experience for users.
 
