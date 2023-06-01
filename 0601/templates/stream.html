@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Video Streamer</title>
+    <style>
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('index') }}">Back</a>
+    <img id="video" src="{{ url_for('video_feed', filename=filename) }}" width="640" height="480">
+</body>
+</html>
+
