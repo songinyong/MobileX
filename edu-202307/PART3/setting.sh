@@ -15,7 +15,7 @@ fi
 
 sudo dnf -y install ffmpeg
 
-cp webcam_streaming.txt /opt/deepstream/deepstream/samples/configs/tao_pretreained_models
+cp webcam_streaming.txt /opt/nvidia/deepstream/deepstream/samples/configs/tao_pretrained_models/webcam_streaming.txt
 
 # deepstream app start
-sudo deepstream-app -c /opt/deepstream/deepstream/samples/configs/tao_pretreained_models/webcam_streaming.txt
+sudo deepstream-app -c /opt/nvidia/deepstream/deepstream/samples/configs/tao_pretrained_models/webcam_streaming.txt
