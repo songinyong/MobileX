@@ -1,0 +1,19 @@
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/jsmpeg-player@3.0.3/build/jsmpeg-player.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <canvas id="canvas" width="640" height="480"></canvas>
+  </div>
+  <script>
+    var player = new JSMpeg.Player('ws://'+location.hostname + ':9999', {canvas: document.getElementById('canvas')});
+      //document.getElementById('startButton').addEventListener('click', function() {
+      //var player = new JSMpeg.Player('ws://10.32.232.197:9999', {canvas: document.getElementById('canvas')});
+    //});
+  </script>
+</body>
+</html>
