@@ -1,5 +1,7 @@
 #!/bin/bash
 
+npm install
+
 container_id=$(docker ps -q --filter ancestor=localhost/cam-deploy:1.0)
 
 # 컨테이너가 실행중이면 종료
